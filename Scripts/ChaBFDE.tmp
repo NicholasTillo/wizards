@@ -1,0 +1,82 @@
+[gd_scene load_steps=6 format=3 uid="uid://d1qdjpsvigcxn"]
+
+[ext_resource type="Script" path="res://character_body_2d.gd" id="1_trjdj"]
+[ext_resource type="Texture2D" uid="uid://dh0l2wmfh4pai" path="res://images.png" id="2_3ofra"]
+[ext_resource type="Script" path="res://Scripts/borders.gd" id="3_fr04m"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qibxy"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_a52ut"]
+
+[node name="Wizard" type="CharacterBody2D" groups=["player"]]
+scale = Vector2(2.45509, 2.44551)
+collision_mask = 29
+motion_mode = 1
+script = ExtResource("1_trjdj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(0.25949, 0.25949)
+shape = SubResource("CircleShape2D_qibxy")
+
+[node name="Sprite2D" type="Sprite2D" parent="CollisionShape2D"]
+scale = Vector2(0.633033, 0.633033)
+texture = ExtResource("2_3ofra")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+scale = Vector2(0.407318, 0.408913)
+position_smoothing_enabled = true
+
+[node name="Borders" type="Node2D" parent="Camera2D"]
+position = Vector2(-578, -321)
+
+[node name="north_border" type="Area2D" parent="Camera2D/Borders" groups=["border"]]
+collision_layer = 8
+collision_mask = 14
+script = ExtResource("3_fr04m")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Camera2D/Borders/north_border"]
+position = Vector2(577, -76)
+scale = Vector2(429.685, 1.88703)
+shape = SubResource("SegmentShape2D_a52ut")
+
+[node name="west_border" type="Area2D" parent="Camera2D/Borders" groups=["border"]]
+collision_layer = 8
+collision_mask = 14
+script = ExtResource("3_fr04m")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Camera2D/Borders/west_border"]
+position = Vector2(-50, 316)
+rotation = 1.5708
+scale = Vector2(261.799, 1.87739)
+shape = SubResource("SegmentShape2D_a52ut")
+
+[node name="east_border" type="Area2D" parent="Camera2D/Borders" groups=["border"]]
+collision_layer = 8
+collision_mask = 14
+script = ExtResource("3_fr04m")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Camera2D/Borders/east_border"]
+position = Vector2(1225, 314)
+rotation = 1.5708
+scale = Vector2(253.548, 1.87413)
+shape = SubResource("SegmentShape2D_a52ut")
+
+[node name="south_border" type="Area2D" parent="Camera2D/Borders" groups=["border"]]
+position = Vector2(5, 765)
+collision_layer = 8
+collision_mask = 14
+script = ExtResource("3_fr04m")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Camera2D/Borders/south_border"]
+position = Vector2(577, -76)
+scale = Vector2(429.685, 1.88703)
+shape = SubResource("SegmentShape2D_a52ut")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(-58.2463, -57.2478)
+scale = Vector2(16.0848, 10.7769)
+
+[connection signal="area_entered" from="Camera2D/Borders/north_border" to="Camera2D/Borders/north_border" method="_on_area_entered"]
+[connection signal="area_entered" from="Camera2D/Borders/west_border" to="Camera2D/Borders/west_border" method="_on_area_entered"]
+[connection signal="area_entered" from="Camera2D/Borders/east_border" to="Camera2D/Borders/east_border" method="_on_area_entered"]
+[connection signal="area_entered" from="Camera2D/Borders/south_border" to="Camera2D/Borders/south_border" method="_on_area_entered"]

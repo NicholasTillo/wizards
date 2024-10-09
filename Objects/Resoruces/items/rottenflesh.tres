@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="item" load_steps=3 format=3 uid="uid://pjeiax2vxbt0"]
+
+[ext_resource type="Texture2D" uid="uid://bau3d5h5qhqp0" path="res://Assets/imageedit_2_8372438745.png" id="1_c22gv"]
+[ext_resource type="Script" path="res://Objects/Resoruces/item.gd" id="2_s7a2t"]
+
+[resource]
+script = ExtResource("2_s7a2t")
+title = "Rotten Flesh"
+overworld_texture = ExtResource("1_c22gv")
+index = 0

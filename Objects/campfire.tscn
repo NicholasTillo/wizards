@@ -1,0 +1,34 @@
+[gd_scene load_steps=6 format=3 uid="uid://b6cxmy6rejjxb"]
+
+[ext_resource type="Script" path="res://Scripts/campfire.gd" id="1_qk65d"]
+[ext_resource type="Texture2D" uid="uid://br2rmjuvlh1c4" path="res://Assets/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIzLTAzL3B4MTYwNDYyNS1pbWFnZS1qb2IxNzgxLnBuZw.webp" id="1_rhsp1"]
+[ext_resource type="AudioStream" uid="uid://c1x5ua237md1y" path="res://Assets/SOunds/084373_heal-36672.mp3" id="3_4lufm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bohwh"]
+size = Vector2(24.1645, 20)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_awock"]
+
+[node name="Campfire" type="StaticBody2D"]
+scale = Vector2(4.8832, 4.8832)
+script = ExtResource("1_qk65d")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.204784, 0)
+shape = SubResource("RectangleShape2D_bohwh")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.0305786, 0.0324836)
+texture = ExtResource("1_rhsp1")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+scale = Vector2(5.04645, 5.04645)
+shape = SubResource("CircleShape2D_awock")
+
+[node name="AudioPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_4lufm")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_player_enter"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_player_leave"]

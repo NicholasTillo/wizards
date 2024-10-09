@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://c6k8lhwdmgitt"]
+
+[ext_resource type="Script" path="res://Scripts/spawner.gd" id="1_st070"]
+[ext_resource type="Texture2D" uid="uid://cpycvplyt08u3" path="res://Assets/Spawner_JE3.webp" id="2_an6k8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bohwh"]
+size = Vector2(24.1645, 20)
+
+[node name="Spawner" type="StaticBody2D"]
+scale = Vector2(4.8832, 4.8832)
+script = ExtResource("1_st070")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_bohwh")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.0724564, 0.0769705)
+texture = ExtResource("2_an6k8")

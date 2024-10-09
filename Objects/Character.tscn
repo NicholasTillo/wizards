@@ -1,0 +1,175 @@
+[gd_scene load_steps=16 format=3 uid="uid://d1qdjpsvigcxn"]
+
+[ext_resource type="Script" path="res://Scripts/Player Scripts/character_body_2d.gd" id="1_usi6w"]
+[ext_resource type="Resource" uid="uid://okv72kbagf8k" path="res://Objects/Resoruces/player_inventory.tres" id="2_6ggp0"]
+[ext_resource type="Texture2D" uid="uid://dh0l2wmfh4pai" path="res://Assets/images.png" id="2_g5vtt"]
+[ext_resource type="Resource" uid="uid://w83ucty31n2q" path="res://Objects/Resoruces/Spells/spell1.tres" id="3_d1fjh"]
+[ext_resource type="AudioStream" uid="uid://4kple0v72ycm" path="res://Assets/SOunds/male-death-sound-128357.mp3" id="3_swaru"]
+[ext_resource type="Script" path="res://Scripts/Player Scripts/inventory_manager.gd" id="4_8j4jv"]
+[ext_resource type="Script" path="res://Scripts/Player Scripts/spell_manager.gd" id="5_g7ccr"]
+[ext_resource type="PackedScene" uid="uid://vhmo2asfstsw" path="res://Scripts/inventory_slot.tscn" id="6_0hev6"]
+[ext_resource type="Resource" uid="uid://pjeiax2vxbt0" path="res://Objects/Resoruces/items/rottenflesh.tres" id="7_h4rdr"]
+[ext_resource type="Resource" uid="uid://cgn1nly6cmn72" path="res://Objects/Resoruces/items/tempitem.tres" id="8_1xj4u"]
+[ext_resource type="Script" path="res://Scripts/drawsection.gd" id="8_cru03"]
+[ext_resource type="Texture2D" uid="uid://c0fuvvrww7bd3" path="res://Assets/418-4183747_border-pixel-art.png" id="9_3qxum"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8wfch"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bkmxo"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pvew7"]
+
+[node name="Wizard" type="CharacterBody2D" groups=["player"]]
+scale = Vector2(2.45509, 2.44551)
+collision_mask = 29
+motion_mode = 1
+script = ExtResource("1_usi6w")
+playerinv = ExtResource("2_6ggp0")
+temp = ExtResource("3_d1fjh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(1.82374, 1.82374)
+shape = SubResource("CircleShape2D_8wfch")
+
+[node name="Sprite" type="Sprite2D" parent="CollisionShape2D"]
+scale = Vector2(0.0900709, 0.0900709)
+texture = ExtResource("2_g5vtt")
+
+[node name="MainCam" type="Camera2D" parent="."]
+scale = Vector2(0.407318, 0.408913)
+position_smoothing_enabled = true
+
+[node name="InventoryManager" type="Node2D" parent="MainCam" node_paths=PackedStringArray("slot_list")]
+script = ExtResource("4_8j4jv")
+slot_list = [NodePath("Display/itempanel/GridContainer/slot1"), NodePath("Display/itempanel/GridContainer/slot2"), NodePath("Display/itempanel/GridContainer/slot3"), NodePath("Display/itempanel/GridContainer/slot4"), NodePath("Display/itempanel/GridContainer/slot5"), NodePath("Display/itempanel/GridContainer/slot6"), NodePath("Display/itempanel/GridContainer/slot7"), NodePath("Display/itempanel/GridContainer/slot8"), NodePath("Display/itempanel/GridContainer/slot9"), NodePath("Display/itempanel/GridContainer/slot10")]
+
+[node name="Display" type="Control" parent="MainCam/InventoryManager"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="itempanel" type="Panel" parent="MainCam/InventoryManager/Display"]
+visible = false
+layout_mode = 0
+offset_left = -402.999
+offset_top = -72.0
+offset_right = 412.001
+offset_bottom = 243.0
+
+[node name="GridContainer" type="GridContainer" parent="MainCam/InventoryManager/Display/itempanel"]
+layout_mode = 0
+offset_left = 63.999
+offset_top = 28.0
+offset_right = 119.999
+offset_bottom = 50.0
+scale = Vector2(12.1079, 12.1079)
+columns = 5
+
+[node name="slot1" parent="MainCam/InventoryManager/Display/itempanel/GridContainer" instance=ExtResource("6_0hev6")]
+layout_mode = 2
+corresponding_item = ExtResource("7_h4rdr")
+
+[node name="slot2" parent="MainCam/InventoryManager/Display/itempanel/GridContainer" instance=ExtResource("6_0hev6")]
+layout_mode = 2
+corresponding_item = ExtResource("8_1xj4u")
+
+[node name="slot3" parent="MainCam/InventoryManager/Display/itempanel/GridContainer" instance=ExtResource("6_0hev6")]
+layout_mode = 2
+corresponding_item = ExtResource("8_1xj4u")
+
+[node name="slot4" parent="MainCam/InventoryManager/Display/itempanel/GridContainer" instance=ExtResource("6_0hev6")]
+layout_mode = 2
+corresponding_item = ExtResource("8_1xj4u")
+
+[node name="slot5" parent="MainCam/InventoryManager/Display/itempanel/GridContainer" instance=ExtResource("6_0hev6")]
+layout_mode = 2
+corresponding_item = ExtResource("8_1xj4u")
+
+[node name="slot6" parent="MainCam/InventoryManager/Display/itempanel/GridContainer" instance=ExtResource("6_0hev6")]
+layout_mode = 2
+corresponding_item = ExtResource("8_1xj4u")
+
+[node name="slot7" parent="MainCam/InventoryManager/Display/itempanel/GridContainer" instance=ExtResource("6_0hev6")]
+layout_mode = 2
+corresponding_item = ExtResource("8_1xj4u")
+
+[node name="slot8" parent="MainCam/InventoryManager/Display/itempanel/GridContainer" instance=ExtResource("6_0hev6")]
+layout_mode = 2
+corresponding_item = ExtResource("8_1xj4u")
+
+[node name="slot9" parent="MainCam/InventoryManager/Display/itempanel/GridContainer" instance=ExtResource("6_0hev6")]
+layout_mode = 2
+corresponding_item = ExtResource("8_1xj4u")
+
+[node name="slot10" parent="MainCam/InventoryManager/Display/itempanel/GridContainer" instance=ExtResource("6_0hev6")]
+layout_mode = 2
+corresponding_item = ExtResource("8_1xj4u")
+
+[node name="drawsection" type="ColorRect" parent="MainCam/InventoryManager/Display"]
+visible = false
+layout_mode = 0
+offset_left = -451.0
+offset_top = -254.0
+offset_right = 501.0
+offset_bottom = 271.0
+color = Color(1, 1, 1, 0.156863)
+script = ExtResource("8_cru03")
+
+[node name="borders" type="Sprite2D" parent="MainCam/InventoryManager/Display/drawsection"]
+position = Vector2(483, 267)
+scale = Vector2(1.10607, 1.09989)
+texture = ExtResource("9_3qxum")
+
+[node name="Borders" type="Node2D" parent="."]
+position = Vector2(-235.43, -131.261)
+scale = Vector2(0.407318, 0.408913)
+
+[node name="south_border" type="StaticBody2D" parent="Borders" groups=["border"]]
+collision_layer = 128
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Borders/south_border"]
+position = Vector2(582, 689)
+scale = Vector2(429.685, 1.88703)
+shape = SubResource("RectangleShape2D_bkmxo")
+
+[node name="north_border" type="StaticBody2D" parent="Borders" groups=["border"]]
+collision_layer = 128
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Borders/north_border"]
+position = Vector2(577, -76)
+scale = Vector2(429.685, 1.88703)
+shape = SubResource("RectangleShape2D_pvew7")
+
+[node name="west_border" type="StaticBody2D" parent="Borders" groups=["border"]]
+collision_layer = 128
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Borders/west_border"]
+position = Vector2(-50, 316)
+rotation = 1.5708
+scale = Vector2(261.799, 1.87739)
+shape = SubResource("RectangleShape2D_bkmxo")
+
+[node name="east_border" type="StaticBody2D" parent="Borders" groups=["border"]]
+collision_layer = 128
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Borders/east_border"]
+position = Vector2(1225, 314)
+rotation = 1.5708
+scale = Vector2(253.548, 1.87413)
+shape = SubResource("RectangleShape2D_bkmxo")
+
+[node name="AudioListener2D" type="AudioListener2D" parent="."]
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+offset_left = -50.5073
+offset_top = -32.3041
+offset_right = 61.4927
+offset_bottom = -5.3041
+scale = Vector2(0.989676, 0.444723)
+
+[node name="AudioPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_swaru")
+
+[node name="SpellManager" type="Node" parent="."]
+script = ExtResource("5_g7ccr")

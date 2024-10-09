@@ -1,0 +1,167 @@
+[gd_scene load_steps=8 format=3 uid="uid://d1qdjpsvigcxn"]
+
+[ext_resource type="Script" path="res://Scripts/character_body_2d.gd" id="1_usi6w"]
+[ext_resource type="Texture2D" uid="uid://dh0l2wmfh4pai" path="res://Assets/images.png" id="2_g5vtt"]
+[ext_resource type="AudioStream" uid="uid://4kple0v72ycm" path="res://Assets/male-death-sound-128357.mp3" id="3_swaru"]
+[ext_resource type="Script" path="res://Scripts/inventory_manager.gd" id="4_8j4jv"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8wfch"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bkmxo"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pvew7"]
+
+[node name="Wizard" type="CharacterBody2D" groups=["player"]]
+scale = Vector2(2.45509, 2.44551)
+collision_mask = 29
+motion_mode = 1
+script = ExtResource("1_usi6w")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(1.82374, 1.82374)
+shape = SubResource("CircleShape2D_8wfch")
+
+[node name="Sprite" type="Sprite2D" parent="CollisionShape2D"]
+scale = Vector2(0.0900709, 0.0900709)
+texture = ExtResource("2_g5vtt")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+scale = Vector2(0.407318, 0.408913)
+position_smoothing_enabled = true
+
+[node name="Borders" type="Node2D" parent="."]
+position = Vector2(-235.43, -131.261)
+scale = Vector2(0.407318, 0.408913)
+
+[node name="south_border" type="StaticBody2D" parent="Borders" groups=["border"]]
+collision_layer = 128
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Borders/south_border"]
+position = Vector2(582, 689)
+scale = Vector2(429.685, 1.88703)
+shape = SubResource("RectangleShape2D_bkmxo")
+
+[node name="north_border" type="StaticBody2D" parent="Borders" groups=["border"]]
+collision_layer = 128
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Borders/north_border"]
+position = Vector2(577, -76)
+scale = Vector2(429.685, 1.88703)
+shape = SubResource("RectangleShape2D_pvew7")
+
+[node name="west_border" type="StaticBody2D" parent="Borders" groups=["border"]]
+collision_layer = 128
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Borders/west_border"]
+position = Vector2(-50, 316)
+rotation = 1.5708
+scale = Vector2(261.799, 1.87739)
+shape = SubResource("RectangleShape2D_bkmxo")
+
+[node name="east_border" type="StaticBody2D" parent="Borders" groups=["border"]]
+collision_layer = 128
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Borders/east_border"]
+position = Vector2(1225, 314)
+rotation = 1.5708
+scale = Vector2(253.548, 1.87413)
+shape = SubResource("RectangleShape2D_bkmxo")
+
+[node name="AudioListener2D" type="AudioListener2D" parent="."]
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+offset_left = -50.5073
+offset_top = -32.3041
+offset_right = 61.4927
+offset_bottom = -5.3041
+scale = Vector2(0.989676, 0.444723)
+
+[node name="AudioPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_swaru")
+
+[node name="InventoryManager" type="Node" parent="."]
+script = ExtResource("4_8j4jv")
+
+[node name="Display" type="Control" parent="InventoryManager"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="itempanel" type="Panel" parent="InventoryManager/Display"]
+visible = false
+layout_mode = 0
+offset_left = -402.999
+offset_top = -72.0
+offset_right = 412.001
+offset_bottom = 243.0
+
+[node name="Item1" type="Button" parent="InventoryManager/Display/itempanel"]
+layout_mode = 0
+offset_left = 25.9999
+offset_top = 23.0
+offset_right = 132.0
+offset_bottom = 129.0
+
+[node name="Item2" type="Button" parent="InventoryManager/Display/itempanel"]
+layout_mode = 0
+offset_left = 196.0
+offset_top = 23.0
+offset_right = 302.0
+offset_bottom = 129.0
+
+[node name="Item3" type="Button" parent="InventoryManager/Display/itempanel"]
+layout_mode = 0
+offset_left = 349.999
+offset_top = 26.0
+offset_right = 455.999
+offset_bottom = 132.0
+
+[node name="Item4" type="Button" parent="InventoryManager/Display/itempanel"]
+layout_mode = 0
+offset_left = 512.999
+offset_top = 30.0
+offset_right = 618.999
+offset_bottom = 136.0
+
+[node name="Item5" type="Button" parent="InventoryManager/Display/itempanel"]
+layout_mode = 0
+offset_left = 671.998
+offset_top = 32.0
+offset_right = 777.998
+offset_bottom = 138.0
+
+[node name="Item6" type="Button" parent="InventoryManager/Display/itempanel"]
+layout_mode = 0
+offset_left = 29.9999
+offset_top = 160.0
+offset_right = 136.0
+offset_bottom = 266.0
+
+[node name="Item7" type="Button" parent="InventoryManager/Display/itempanel"]
+layout_mode = 0
+offset_left = 200.0
+offset_top = 160.0
+offset_right = 306.0
+offset_bottom = 266.0
+
+[node name="Item8" type="Button" parent="InventoryManager/Display/itempanel"]
+layout_mode = 0
+offset_left = 353.999
+offset_top = 163.0
+offset_right = 459.999
+offset_bottom = 269.0
+
+[node name="Item9" type="Button" parent="InventoryManager/Display/itempanel"]
+layout_mode = 0
+offset_left = 516.999
+offset_top = 167.0
+offset_right = 622.999
+offset_bottom = 273.0
+
+[node name="Item10" type="Button" parent="InventoryManager/Display/itempanel"]
+layout_mode = 0
+offset_left = 675.998
+offset_top = 169.0
+offset_right = 781.998
+offset_bottom = 275.0

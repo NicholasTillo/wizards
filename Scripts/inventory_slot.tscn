@@ -1,0 +1,38 @@
+[gd_scene load_steps=3 format=3 uid="uid://vhmo2asfstsw"]
+
+[ext_resource type="Script" path="res://Scripts/inventory_slot.gd" id="1_fipxl"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ftr7o"]
+
+[node name="inventory_slot" type="Button"]
+offset_right = 8.0
+offset_bottom = 8.0
+scale = Vector2(28.9846, 28.9846)
+script = ExtResource("1_fipxl")
+
+[node name="count_display" type="Label" parent="."]
+layout_mode = 0
+offset_left = 6.24469
+offset_top = 4.38163
+offset_right = 22.2447
+offset_bottom = 27.3816
+scale = Vector2(0.109728, 0.109728)
+text = "0"
+
+[node name="ColorRect" type="ColorRect" parent="."]
+z_index = 2
+layout_mode = 0
+offset_left = 0.862526
+offset_top = 0.310509
+offset_right = 40.8625
+offset_bottom = 40.3105
+scale = Vector2(0.164612, 0.171694)
+color = Color(0, 0, 0, 0.501961)
+
+[node name="item_display" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(4.10562, 3.76061)
+scale = Vector2(0.040148, 0.0418751)
+texture = SubResource("CompressedTexture2D_ftr7o")
+region_enabled = true
+region_rect = Rect2(0, 1, 161, 157)

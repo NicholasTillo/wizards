@@ -1,0 +1,6 @@
+[gd_resource type="Resource" script_class="spellShape" load_steps=2 format=3 uid="uid://dbn7lwwf6oir4"]
+
+[ext_resource type="Script" path="res://Objects/Resoruces/spellShape.gd" id="1_40aaw"]
+
+[resource]
+script = ExtResource("1_40aaw")

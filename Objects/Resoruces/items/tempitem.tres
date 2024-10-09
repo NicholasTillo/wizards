@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="item" load_steps=4 format=3 uid="uid://cgn1nly6cmn72"]
+
+[ext_resource type="Script" path="res://Objects/Resoruces/item.gd" id="1_ue4cp"]
+
+[sub_resource type="Gradient" id="Gradient_gohqm"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_bt655"]
+gradient = SubResource("Gradient_gohqm")
+
+[resource]
+script = ExtResource("1_ue4cp")
+title = "tempitem"
+overworld_texture = SubResource("GradientTexture2D_bt655")
+index = 1

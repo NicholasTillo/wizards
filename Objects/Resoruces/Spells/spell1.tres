@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="spell" load_steps=2 format=3 uid="uid://w83ucty31n2q"]
+
+[ext_resource type="Script" path="res://Objects/Resoruces/spell.gd" id="1_8dy0q"]
+
+[resource]
+script = ExtResource("1_8dy0q")
+isCantrip = true
+id = 111
+name = "firebolt"
+recepie = []
+speed = 0
+damage = 4

@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://dei7ymqj0yelu"]
+
+[ext_resource type="Script" path="res://main.gd" id="1_ulc3v"]
+[ext_resource type="PackedScene" uid="uid://c61mybvlthju4" path="res://Objects/wall_1.tscn" id="2_sryug"]
+[ext_resource type="PackedScene" uid="uid://cp0k7ntuhkuok" path="res://Objects/zombie.tscn" id="3_tu7sx"]
+[ext_resource type="PackedScene" uid="uid://c6k8lhwdmgitt" path="res://Objects/spawner.tscn" id="4_u14nj"]
+[ext_resource type="PackedScene" uid="uid://b6cxmy6rejjxb" path="res://Objects/campfire.tscn" id="5_2bx08"]
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_ulc3v")
+
+[node name="StaticBody2D" parent="." instance=ExtResource("2_sryug")]
+position = Vector2(357, 157)
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("3_tu7sx")]
+position = Vector2(646, 196)
+
+[node name="CharacterBody2D2" parent="." instance=ExtResource("3_tu7sx")]
+position = Vector2(-669, 382)
+
+[node name="StaticBody2D2" parent="." instance=ExtResource("2_sryug")]
+position = Vector2(-408, 111)
+
+[node name="StaticBody2D3" parent="." instance=ExtResource("2_sryug")]
+position = Vector2(-51, 430)
+
+[node name="StaticBody2D4" parent="." instance=ExtResource("2_sryug")]
+position = Vector2(-42, -100)
+
+[node name="Spawner" parent="." instance=ExtResource("4_u14nj")]
+position = Vector2(452, -178)
+
+[node name="Campfire" parent="." instance=ExtResource("5_2bx08")]
