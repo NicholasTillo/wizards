@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://drk7jdepjbhkh"]
+
+[ext_resource type="Script" path="res://Scripts/ChillTouchBehaviour.gd" id="1_7eef5"]
+[ext_resource type="Texture2D" uid="uid://u4idai3h2u1m" path="res://Assets/chilltouch.png" id="2_u65x7"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4d28k"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jil5d"]
+
+[node name="Bullet" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 156
+script = ExtResource("1_7eef5")
+
+[node name="Collider" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_4d28k")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+rotation = 1.5708
+texture = ExtResource("2_u65x7")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+scale = Vector2(15, 15)
+shape = SubResource("CircleShape2D_jil5d")
+
+[connection signal="body_entered" from="Area2D" to="." method="on_enter"]
+[connection signal="body_exited" from="Area2D" to="." method="on_exit"]

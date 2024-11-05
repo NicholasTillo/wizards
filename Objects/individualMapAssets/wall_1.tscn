@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://c61mybvlthju4"]
+
+[ext_resource type="Texture2D" uid="uid://cw84m72sads7f" path="res://Assets/38b4a7d6673ca3009f95755fd993e1f3.jpg" id="1_516m6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4gmyd"]
+
+[node name="StaticBody2D" type="StaticBody2D" groups=["obsticle"]]
+position = Vector2(142, 80)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(2.12002, 2.74876)
+shape = SubResource("RectangleShape2D_4gmyd")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.0624895, -0.122162)
+texture = ExtResource("1_516m6")

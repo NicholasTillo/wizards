@@ -26,5 +26,13 @@ func start_drawing():
 	curLine = line.instantiate()
 	add_child.call_deferred(curLine)
 
+
+func detect_shape():
+	
+	pass
+	
+	
 func finish_drawing():
+	detect_shape()
+	curLine.queue_free()
 	flag = false 

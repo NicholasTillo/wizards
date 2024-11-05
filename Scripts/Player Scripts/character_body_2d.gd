@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-class_name character_body_2d
+class_name player_body_2d
 
 #Export Variables
 @export var speed = 400
@@ -8,9 +8,8 @@ class_name character_body_2d
 @export var temp:spell
 
 #Onready Variables
-@onready var bullet = preload("res://Objects/bullet.tscn")
 @onready var main = self.get_parent()
-
+@onready var bullet = preload("res://Objects/spellProjectiles/bullet.tscn")
 #Other Variables
 var current_spell: spell = null
 var dead = false
@@ -25,14 +24,16 @@ var inv_section_visible = false
 
 func get_i_frames():
 	return i_frames
-	
+
 ##Spell Handlers
 func get_current_spell():
 	return current_spell
-	
+
 func set_current_spell(p_spell):
+	print(p_spell)
 	current_spell = p_spell
-	
+	bullet = load(current_spell.get_scene())
+
 
 ##Condition Handlers
 func apply_condition(condition):
@@ -40,12 +41,12 @@ func apply_condition(condition):
 
 func handle_condition(p_condition):
 	pass
-	
-	
+
+
 func handle_conditions():
 	for i in conditionList:
 		handle_condition(i)
-		
+
 
 
 

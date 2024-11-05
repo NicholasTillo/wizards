@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="spell" load_steps=4 format=3 uid="uid://bnoves8wqsixv"]
+
+[ext_resource type="Script" path="res://Objects/Resoruces/spell.gd" id="1_cjikg"]
+[ext_resource type="Texture2D" uid="uid://u4idai3h2u1m" path="res://Assets/chilltouch.png" id="2_l0rvq"]
+[ext_resource type="Resource" uid="uid://c8hko8uwghiml" path="res://Objects/Resoruces/spellShapes/square.tres" id="2_mhwcc"]
+
+[resource]
+script = ExtResource("1_cjikg")
+isCantrip = true
+id = 113
+name = "chilltouch"
+recepie = []
+speed = 200
+damage = 3
+shape = ExtResource("2_mhwcc")
+sprite = ExtResource("2_l0rvq")
+scene_path = "res://Objects/spellProjectiles/chilltouch.tscn"
+condition_array = []

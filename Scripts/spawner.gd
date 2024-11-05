@@ -1,6 +1,6 @@
 extends StaticBody2D
 @onready var main = self.get_parent()
-@onready var spawner = preload("res://Objects/zombie.tscn")
+@onready var spawner = preload("res://Objects/Enemy/zombie.tscn")
 var spawn_time = 5.0
 var rng = RandomNumberGenerator.new()
 

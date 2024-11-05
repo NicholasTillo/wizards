@@ -1,19 +1,10 @@
-extends CharacterBody2D
-
-@export var drop: item
-@onready var collectable = preload("res://Objects/collectable.tscn")
-@onready var main = self.get_parent()
+extends enemyInterface
 
 
-var health = 20
-var speed = 20
-var damage_num = 2
-var dead = false
-var player = null
-var player_chase = null
-var rng = RandomNumberGenerator.new()
+class_name zombie
 
-var conditionList: Array = []
+
+
 
 func _ready():
 	$HealthBar.max_value = health

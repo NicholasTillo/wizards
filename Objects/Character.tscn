@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Scripts/Player Scripts/character_body_2d.gd" id="1_usi6w"]
 [ext_resource type="Resource" uid="uid://okv72kbagf8k" path="res://Objects/Resoruces/player_inventory.tres" id="2_6ggp0"]
 [ext_resource type="Texture2D" uid="uid://dh0l2wmfh4pai" path="res://Assets/images.png" id="2_g5vtt"]
-[ext_resource type="Resource" uid="uid://w83ucty31n2q" path="res://Objects/Resoruces/Spells/spell1.tres" id="3_d1fjh"]
+[ext_resource type="Resource" uid="uid://bnoves8wqsixv" path="res://Objects/Resoruces/Spells/Cantrips/spell2.tres" id="3_lpdrb"]
 [ext_resource type="AudioStream" uid="uid://4kple0v72ycm" path="res://Assets/SOunds/male-death-sound-128357.mp3" id="3_swaru"]
 [ext_resource type="Script" path="res://Scripts/Player Scripts/inventory_manager.gd" id="4_8j4jv"]
 [ext_resource type="Script" path="res://Scripts/Player Scripts/spell_manager.gd" id="5_g7ccr"]
@@ -25,7 +25,7 @@ collision_mask = 29
 motion_mode = 1
 script = ExtResource("1_usi6w")
 playerinv = ExtResource("2_6ggp0")
-temp = ExtResource("3_d1fjh")
+temp = ExtResource("3_lpdrb")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(1.82374, 1.82374)
