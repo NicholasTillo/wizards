@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/zombie.gd" id="1_6y3k0"]
 [ext_resource type="Resource" uid="uid://pjeiax2vxbt0" path="res://Objects/Resoruces/items/rottenflesh.tres" id="2_3by8h"]
-[ext_resource type="Texture2D" uid="uid://bxbhbgs74naqr" path="res://Assets/853b792d9db7c1afed8be8f25694c61d.png" id="3_7f6vy"]
+[ext_resource type="Texture2D" uid="uid://cgj4mdqupeu3c" path="res://Assets/Buckethead_Zombie.png" id="3_t4a7s"]
 [ext_resource type="AudioStream" uid="uid://bvwlyl4mb2tdd" path="res://Assets/SOunds/zombie-death-2-95167.mp3" id="4_v5jd7"]
 [ext_resource type="AudioStream" uid="uid://b2j045ulal82c" path="res://Assets/SOunds/zombie-6851.mp3" id="5_i2p4w"]
 
@@ -26,7 +26,7 @@ shape = SubResource("CircleShape2D_o5i4l")
 
 [node name="Sprite" type="Sprite2D" parent="."]
 scale = Vector2(0.100048, 0.100048)
-texture = ExtResource("3_7f6vy")
+texture = ExtResource("3_t4a7s")
 
 [node name="HealthBar" type="ProgressBar" parent="."]
 offset_left = -77.0

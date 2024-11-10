@@ -18,7 +18,9 @@ func add(num: int):
 	item_count += num
 	write(item_count)
 	
-
+func select():
+	pass
+	
 func dim():
 	dimmer.visible = true
 	

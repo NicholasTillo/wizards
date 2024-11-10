@@ -4,35 +4,42 @@ class_name player_body_2d
 
 #Export Variables
 @export var speed = 400
-@export var playerinv:inventory
+
 @export var temp:spell
 
 #Onready Variables
 @onready var main = self.get_parent()
 @onready var bullet = preload("res://Objects/spellProjectiles/bullet.tscn")
 #Other Variables
-var current_spell: spell = null
+var current_cantrip: spell = null
 var dead = false
 var health = 20  
 var i_frames = 0
 var rng = RandomNumberGenerator.new()
 var conditionList: Array = []
 
+#Verbal Components 
+var held_fire_time = 0
+var charging = false
+
+#Somatic Components 
 var draw_section_visible = false
 var inv_section_visible = false
 
+#Material Components 
+@export var playerinv:inventory
 
 func get_i_frames():
 	return i_frames
 
 ##Spell Handlers
-func get_current_spell():
-	return current_spell
+func get_current_cantrip():
+	return current_cantrip
 
-func set_current_spell(p_spell):
+func set_current_cantrip(p_spell):
 	print(p_spell)
-	current_spell = p_spell
-	bullet = load(current_spell.get_scene())
+	current_cantrip = p_spell
+	bullet = load(current_cantrip.get_scene())
 
 
 ##Condition Handlers
@@ -52,10 +59,10 @@ func handle_conditions():
 
 func _ready():
 	#Set Init Values 
-	$HealthBar.max_value = health
-	$HealthBar.value = health
+	$OtherDisplays/HealthBar.max_value = health
+	$OtherDisplays/HealthBar.value = health
 	
-	set_current_spell(temp)
+	set_current_cantrip(temp)
 	
 func damage(num):
 	health -= num
@@ -84,7 +91,7 @@ func death_animation():
 	
 	
 func update_damage():
-	$HealthBar.value = health
+	$OtherDisplays/  HealthBar.value = health
 
 
 func get_input():
@@ -97,6 +104,8 @@ func _physics_process(delta):
 	if not dead:
 		move_and_slide()
 	i_frames -= delta
+	if charging:
+		held_fire_time -= delta
 
 
 
@@ -105,7 +114,18 @@ func _input(event):
 		return 
 
 	if event.is_action_pressed("fire"):
-		activate_spell()
+		$OtherDisplays/ChargeBar.visible = true
+		charging = true
+		
+	if event.is_action_released("fire"):
+		if held_fire_time < 1:
+			charging = false
+			activate_cantrip()
+		else:
+			######
+			activate_spell(int(held_fire_time), "shape", "inventory.get_chosen")
+			
+		$OtherDisplays/ChargeBar.visible = false
 		
 
 		#Handlers for menu
@@ -135,8 +155,13 @@ func _input(event):
 		$MainCam/InventoryManager/Display/drawsection.visible = false
 		
 
-func activate_spell():
+func activate_cantrip():
 	var b = bullet.instantiate()
 	b.position = position + ((get_global_mouse_position() - position).normalized() * 50)
 	main.add_child.call_deferred(b)
 	print("Created")
+	
+	
+####THIS ONE NEXT
+func activate_spell(verbal, somatic, material):
+	pass

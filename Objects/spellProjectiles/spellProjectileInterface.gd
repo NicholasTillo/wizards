@@ -4,7 +4,7 @@ class_name SpellProjectileInterface
 
 var chosenSpell = null
 var speed = 0
-var characterScript: character_body_2d = null
+var characterScript: player_body_2d = null
 var player_pos: Vector2 = Vector2(0,0)
 
 
@@ -22,10 +22,10 @@ func collision(p_body):
 #SHOULD NOT OVERRIDE UNLESS KNOWING WHAT DOING. 
 func _ready() -> void:
 	#Find the players position
-	characterScript = get_tree().get_nodes_in_group("player")[0] as character_body_2d
+	characterScript = get_tree().get_nodes_in_group("player")[0] as player_body_2d
 	player_pos = get_tree().get_nodes_in_group("player")[0].position
 	
-	chosenSpell = characterScript.get_current_spell()
+	chosenSpell = characterScript.get_current_cantrip()
 	
 	init_unique_variables()
 	

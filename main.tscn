@@ -1,15 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://dei7ymqj0yelu"]
+[gd_scene load_steps=5 format=3 uid="uid://dei7ymqj0yelu"]
 
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_ulc3v"]
 [ext_resource type="PackedScene" uid="uid://cp0k7ntuhkuok" path="res://Objects/Enemy/zombie.tscn" id="3_tu7sx"]
-[ext_resource type="PackedScene" uid="uid://c6k8lhwdmgitt" path="res://Objects/individualMapAssets/spawner.tscn" id="4_u14nj"]
+[ext_resource type="PackedScene" uid="uid://1d5iyi5ba574" path="res://map_1.tscn" id="4_d0ejd"]
 [ext_resource type="PackedScene" uid="uid://b6cxmy6rejjxb" path="res://Objects/individualMapAssets/campfire.tscn" id="5_2bx08"]
-[ext_resource type="PackedScene" uid="uid://d0kn55exxn16y" path="res://Objects/Maps/Map1.tscn" id="6_km1gr"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_ulc3v")
-
-[node name="TileMapLayer" parent="." instance=ExtResource("6_km1gr")]
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("3_tu7sx")]
 position = Vector2(1477, 62)
@@ -17,8 +14,7 @@ position = Vector2(1477, 62)
 [node name="CharacterBody2D2" parent="." instance=ExtResource("3_tu7sx")]
 position = Vector2(1334, 413)
 
-[node name="Spawner" parent="." instance=ExtResource("4_u14nj")]
-position = Vector2(1226, 121)
-
 [node name="Campfire" parent="." instance=ExtResource("5_2bx08")]
 position = Vector2(-119, 207)
+
+[node name="Map1" parent="." instance=ExtResource("4_d0ejd")]

@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://1d5iyi5ba574"]
+
+[ext_resource type="PackedScene" uid="uid://d0kn55exxn16y" path="res://Objects/Maps/Map1.tscn" id="1_ptrra"]
+[ext_resource type="PackedScene" uid="uid://c6k8lhwdmgitt" path="res://Objects/individualMapAssets/spawner.tscn" id="2_qiixt"]
+
+[node name="Map1" type="Node2D"]
+
+[node name="layer_holder" parent="." instance=ExtResource("1_ptrra")]
+
+[node name="spawner_holder" type="Node2D" parent="."]
+
+[node name="Spawner" parent="spawner_holder" instance=ExtResource("2_qiixt")]
+position = Vector2(1226, 121)
+
+[node name="Spawner2" parent="spawner_holder" instance=ExtResource("2_qiixt")]
+position = Vector2(1376, 597)
+
+[node name="Spawner3" parent="spawner_holder" instance=ExtResource("2_qiixt")]
+position = Vector2(1648, 130)

@@ -24,8 +24,8 @@ scale = Vector2(2.45509, 2.44551)
 collision_mask = 29
 motion_mode = 1
 script = ExtResource("1_usi6w")
-playerinv = ExtResource("2_6ggp0")
 temp = ExtResource("3_lpdrb")
+playerinv = ExtResource("2_6ggp0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(1.82374, 1.82374)
@@ -37,6 +37,7 @@ texture = ExtResource("2_g5vtt")
 
 [node name="MainCam" type="Camera2D" parent="."]
 scale = Vector2(0.407318, 0.408913)
+zoom = Vector2(0.75, 0.75)
 position_smoothing_enabled = true
 
 [node name="InventoryManager" type="Node2D" parent="MainCam" node_paths=PackedStringArray("slot_list")]
@@ -161,15 +162,34 @@ shape = SubResource("RectangleShape2D_bkmxo")
 
 [node name="AudioListener2D" type="AudioListener2D" parent="."]
 
-[node name="HealthBar" type="ProgressBar" parent="."]
+[node name="AudioPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_swaru")
+
+[node name="SpellManager" type="Node" parent="."]
+script = ExtResource("5_g7ccr")
+
+[node name="OtherDisplays" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="HealthBar" type="ProgressBar" parent="OtherDisplays"]
 offset_left = -50.5073
 offset_top = -32.3041
 offset_right = 61.4927
 offset_bottom = -5.3041
 scale = Vector2(0.989676, 0.444723)
 
-[node name="AudioPlayer" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("3_swaru")
-
-[node name="SpellManager" type="Node" parent="."]
-script = ExtResource("5_g7ccr")
+[node name="ChargeBar" type="ProgressBar" parent="OtherDisplays"]
+layout_mode = 0
+offset_left = 22.8098
+offset_top = -18.81
+offset_right = 26.8098
+offset_bottom = 8.19002
+scale = Vector2(2.71064, 1.41243)
+max_value = 10.0
+step = 1.0
+value = 1.0
+fill_mode = 3
+show_percentage = false
