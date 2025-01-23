@@ -25,6 +25,7 @@ player=""
 border=""
 enemy=""
 obsticle=""
+audio=""
 
 [input]
 

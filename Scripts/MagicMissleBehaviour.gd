@@ -1,11 +1,9 @@
 extends SpellProjectileInterface
 
 
-
-
 # Called when the node enters the scene tree for the first time.
 func init_unique_variables():
-	chosenSpell = load("res://Objects/Resoruces/Spells/Cantrips/spell1.tres")
+	chosenSpell = load("res://Objects/Resoruces/Spells/Cantrips/MagicMissles.tres")
 	 #Get the vector that goes towards the mouse
 	velocity = (get_global_mouse_position() - player_pos).normalized()
 		

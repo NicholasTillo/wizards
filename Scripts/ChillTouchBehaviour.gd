@@ -4,7 +4,8 @@ var closest_enemy = null
 
 
 func init_unique_variables():
-	
+	chosenSpell = load("res://Objects/Resoruces/Spells/Cantrips/spell2.tres")
+
 	 #Get the vector that goes towards the mouse
 	velocity = (get_global_mouse_position() - player_pos).normalized()
 		

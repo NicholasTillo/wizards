@@ -11,13 +11,22 @@ class_name player_body_2d
 @onready var main = self.get_parent()
 @onready var bullet = preload("res://Objects/spellProjectiles/bullet.tscn")
 #Other Variables
-var current_cantrip: spell = null
+
 var dead = false
-var health = 20  
+var health = 20
 var i_frames = 0
 var rng = RandomNumberGenerator.new()
 var conditionList: Array = []
 
+#UI Elements
+@onready var health_bar_ui = $OtherDisplays/HealthBar
+@onready var charge_bar_ui = $OtherDisplays/ChargeBar
+
+#SpellStuff
+var spell_book: Array = []
+var current_cantrip: spell = null
+var recent_cast: spell = null
+var wand_cooldown: float = 0
 #Verbal Components 
 var held_fire_time = 0
 var charging = false
@@ -41,6 +50,13 @@ func set_current_cantrip(p_spell):
 	current_cantrip = p_spell
 	bullet = load(current_cantrip.get_scene())
 
+func get_recent_cast():
+	return recent_cast
+
+func set_recent_cast(p_spell):
+	current_cantrip = p_spell
+	bullet = load(current_cantrip.get_scene())
+
 
 ##Condition Handlers
 func apply_condition(condition):
@@ -59,8 +75,8 @@ func handle_conditions():
 
 func _ready():
 	#Set Init Values 
-	$OtherDisplays/HealthBar.max_value = health
-	$OtherDisplays/HealthBar.value = health
+	health_bar_ui.max_value = health
+	health_bar_ui.value = health
 	
 	set_current_cantrip(temp)
 	
@@ -78,7 +94,7 @@ func heal(p_amount):
 
 	
 func die():
-	$AudioPlayer.play()
+	$DeathAudioPlayer.play()
 	death_animation()
 	await get_tree().create_timer(3.0).timeout
 	get_tree().reload_current_scene()
@@ -90,8 +106,12 @@ func death_animation():
 	$CollisionShape2D/Sprite.texture = load("res://Assets/meteorite-or-fire-ball-illustration-png.webp")
 	
 	
+	
+
+	
+	
 func update_damage():
-	$OtherDisplays/  HealthBar.value = health
+	health_bar_ui.value = health
 
 
 func get_input():
@@ -104,22 +124,38 @@ func _physics_process(delta):
 	if not dead:
 		move_and_slide()
 	i_frames -= delta
+	
 	if charging:
-		held_fire_time -= delta
+		print(held_fire_time)
+		held_fire_time += delta
+		update_chargebar(held_fire_time)
+	if wand_cooldown > 0:
+		wand_cooldown -= delta
 
 
-
+func update_chargebar(p_held_fire_time):
+	charge_bar_ui.value = int(p_held_fire_time)
+	
+	
 func _input(event):
 	if dead:
 		return 
 
 	if event.is_action_pressed("fire"):
+		if wand_cooldown > 0:
+			return
+			
+			
 		$OtherDisplays/ChargeBar.visible = true
 		charging = true
+		held_fire_time = 0
 		
-	if event.is_action_released("fire"):
+	if event.is_action_released("fire"):			
+		if wand_cooldown > 0:
+			return
+		print(held_fire_time)
+		charging = false
 		if held_fire_time < 1:
-			charging = false
 			activate_cantrip()
 		else:
 			######
@@ -163,5 +199,23 @@ func activate_cantrip():
 	
 	
 ####THIS ONE NEXT
-func activate_spell(verbal, somatic, material):
-	pass
+func activate_spell(verbal, somatic, materials):
+	for single_spell in spell_book:
+		if(single_spell.lower_verbal_bound >= verbal and 
+			single_spell.upper_verbal_bound <= verbal and 
+				single_spell.somatic_requirement == materials and  
+					single_spell.material_requirement == materials ):
+			var spell_instance = single_spell;
+			var b = spell_instance.instantiate()
+			b.position = position + ((get_global_mouse_position() - position).normalized() * 50)
+			main.add_child.call_deferred(b)
+			return
+			
+	fizzle()
+	
+		
+func fizzle():
+	$MiscAudioPlayer.play()
+	wand_cooldown = 2
+	 
+	

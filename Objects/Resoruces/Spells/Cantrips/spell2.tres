@@ -1,5 +1,6 @@
-[gd_resource type="Resource" script_class="spell" load_steps=4 format=3 uid="uid://bnoves8wqsixv"]
+[gd_resource type="Resource" script_class="spell" load_steps=5 format=3 uid="uid://bnoves8wqsixv"]
 
+[ext_resource type="AudioStream" uid="uid://cofii26bv58ff" path="res://Assets/SOunds/Soundbit1.mp3" id="1_5m42i"]
 [ext_resource type="Script" path="res://Objects/Resoruces/spell.gd" id="1_cjikg"]
 [ext_resource type="Texture2D" uid="uid://u4idai3h2u1m" path="res://Assets/chilltouch.png" id="2_l0rvq"]
 [ext_resource type="Resource" uid="uid://c8hko8uwghiml" path="res://Objects/Resoruces/spellShapes/square.tres" id="2_mhwcc"]
@@ -15,4 +16,5 @@ damage = 3
 shape = ExtResource("2_mhwcc")
 sprite = ExtResource("2_l0rvq")
 scene_path = "res://Objects/spellProjectiles/chilltouch.tscn"
+cast_spell = ExtResource("1_5m42i")
 condition_array = []

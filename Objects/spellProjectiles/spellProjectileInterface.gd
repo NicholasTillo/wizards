@@ -25,9 +25,12 @@ func _ready() -> void:
 	characterScript = get_tree().get_nodes_in_group("player")[0] as player_body_2d
 	player_pos = get_tree().get_nodes_in_group("player")[0].position
 	
-	chosenSpell = characterScript.get_current_cantrip()
-	
 	init_unique_variables()
+	
+	var AudioPlayer = get_tree().get_nodes_in_group("audio")[0] as AudioStreamPlayer2D
+	AudioPlayer.stream = chosenSpell.cast_spell
+	AudioPlayer.play()
+	
 	
 func _physics_process(delta: float) -> void:
 	var moveVector = movement()

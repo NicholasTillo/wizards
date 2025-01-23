@@ -9,13 +9,14 @@ enum {
 	DEAD
 }
 @export var drop: item
+@export var enemyStat: enemyStats
 @onready var collectable = preload("res://Objects/collectable.tscn")
 @onready var main = self.get_parent()
 
 
-var health = 20
-var speed = 20
-var damage_num = 2
+var health:int
+var speed:int
+var damage_num:int
 var movement_timer = 0
 var player = null
 var rng = RandomNumberGenerator.new()
@@ -28,6 +29,7 @@ var conditionList: Array = []
 
 func _ready():
 	pass
+	
 
 func death_animation():
 	pass

@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="enemyStats" load_steps=2 format=3 uid="uid://dhyswl3xedh1q"]
+
+[ext_resource type="Script" path="res://Objects/Resoruces/enemy.gd" id="1_3de4b"]
+
+[resource]
+script = ExtResource("1_3de4b")
+id = 2
+name = "BucketZombie"
+health = 30
+speed = 15
+damage = 2
+condition_array = []

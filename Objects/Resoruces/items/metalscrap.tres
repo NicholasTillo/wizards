@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="item" load_steps=3 format=3 uid="uid://budgc1awnqp31"]
+
+[ext_resource type="Script" path="res://Objects/Resoruces/item.gd" id="1_jnsfh"]
+[ext_resource type="Texture2D" uid="uid://cksh1n4csq40c" path="res://Assets/Items/scrap.png" id="1_k0xc3"]
+
+[resource]
+script = ExtResource("1_jnsfh")
+title = "Metal Scrap"
+overworld_texture = ExtResource("1_k0xc3")
+index = 1

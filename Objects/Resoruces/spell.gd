@@ -12,6 +12,7 @@ class_name spell
 @export var shape: shapeSpell = null
 @export var sprite: Texture2D = null
 @export var scene_path: String = ""
+@export var cast_spell: AudioStreamMP3 
 
 @export var condition_array: Array = []
 

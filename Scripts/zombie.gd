@@ -5,8 +5,12 @@ class_name zombie
 
 
 func _ready():
+	health = enemyStat.getHealth()
+	speed = enemyStat.getSpeed()
+	damage_num = enemyStat.getDamage()
 	$HealthBar.max_value = health
 	$HealthBar.value = health
+	
 	
 func damage(num):
 	health -= num

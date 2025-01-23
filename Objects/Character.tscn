@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://d1qdjpsvigcxn"]
+[gd_scene load_steps=17 format=3 uid="uid://d1qdjpsvigcxn"]
 
 [ext_resource type="Script" path="res://Scripts/Player Scripts/character_body_2d.gd" id="1_usi6w"]
 [ext_resource type="Resource" uid="uid://okv72kbagf8k" path="res://Objects/Resoruces/player_inventory.tres" id="2_6ggp0"]
@@ -12,6 +12,7 @@
 [ext_resource type="Resource" uid="uid://cgn1nly6cmn72" path="res://Objects/Resoruces/items/tempitem.tres" id="8_1xj4u"]
 [ext_resource type="Script" path="res://Scripts/drawsection.gd" id="8_cru03"]
 [ext_resource type="Texture2D" uid="uid://c0fuvvrww7bd3" path="res://Assets/418-4183747_border-pixel-art.png" id="9_3qxum"]
+[ext_resource type="AudioStream" uid="uid://dl2yr7o37wys2" path="res://Assets/SOunds/large-underwater-explosion-190270.mp3" id="12_bbp8p"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8wfch"]
 
@@ -69,10 +70,12 @@ columns = 5
 
 [node name="slot1" parent="MainCam/InventoryManager/Display/itempanel/GridContainer" instance=ExtResource("6_0hev6")]
 layout_mode = 2
+keep_pressed_outside = true
 corresponding_item = ExtResource("7_h4rdr")
 
 [node name="slot2" parent="MainCam/InventoryManager/Display/itempanel/GridContainer" instance=ExtResource("6_0hev6")]
 layout_mode = 2
+keep_pressed_outside = true
 corresponding_item = ExtResource("8_1xj4u")
 
 [node name="slot3" parent="MainCam/InventoryManager/Display/itempanel/GridContainer" instance=ExtResource("6_0hev6")]
@@ -162,8 +165,14 @@ shape = SubResource("RectangleShape2D_bkmxo")
 
 [node name="AudioListener2D" type="AudioListener2D" parent="."]
 
-[node name="AudioPlayer" type="AudioStreamPlayer2D" parent="."]
+[node name="DeathAudioPlayer" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_swaru")
+
+[node name="SpellAudioPlayer" type="AudioStreamPlayer2D" parent="." groups=["audio"]]
+stream = ExtResource("12_bbp8p")
+
+[node name="MiscAudioPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("12_bbp8p")
 
 [node name="SpellManager" type="Node" parent="."]
 script = ExtResource("5_g7ccr")
@@ -175,6 +184,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="HealthBar" type="ProgressBar" parent="OtherDisplays"]
+layout_mode = 0
 offset_left = -50.5073
 offset_top = -32.3041
 offset_right = 61.4927
