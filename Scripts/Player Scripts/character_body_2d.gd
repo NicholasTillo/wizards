@@ -27,6 +27,7 @@ var spell_book: Array = []
 var current_cantrip: spell = null
 var recent_cast: spell = null
 var wand_cooldown: float = 0
+
 #Verbal Components 
 var held_fire_time = 0
 var charging = false
@@ -34,6 +35,7 @@ var charging = false
 #Somatic Components 
 var draw_section_visible = false
 var inv_section_visible = false
+var finishedShape:shapeSpell
 
 #Material Components 
 @export var playerinv:inventory
@@ -100,14 +102,8 @@ func die():
 	get_tree().reload_current_scene()
 	
 	
-	
-	
 func death_animation():
 	$CollisionShape2D/Sprite.texture = load("res://Assets/meteorite-or-fire-ball-illustration-png.webp")
-	
-	
-	
-
 	
 	
 func update_damage():
@@ -180,15 +176,20 @@ func _input(event):
 		#Handlers for drawing
 	if event.is_action_pressed("left_click") and draw_section_visible == true:
 		$MainCam/InventoryManager/Display/drawsection.start_drawing()
-	if event.is_action_released("left_click") and draw_section_visible == true:
-		var finishedShape = $MainCam/InventoryManager/Display/drawsection.finish_drawing()
 		
+	#if event.is_action_released("left_click") and draw_section_visible == true:
+		#var finishedShape = $MainCam/InventoryManager/Display/drawsection.finish_drawing()
+	
+	if event.is_action_released("left_click") and draw_section_visible == true:
+		$MainCam/InventoryManager/Display/drawsection.mark_end_stroke()
 	if event.is_action_pressed("draw_menu"):
 		draw_section_visible = true
 		$MainCam/InventoryManager/Display/drawsection.visible = true
+		
 	if event.is_action_released("draw_menu"):
 		draw_section_visible = false
 		$MainCam/InventoryManager/Display/drawsection.visible = false
+		var finishedShape = $MainCam/InventoryManager/Display/drawsection.finish_drawing()
 		
 
 func activate_cantrip():
